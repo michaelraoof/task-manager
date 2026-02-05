@@ -18,21 +18,22 @@ export default function TaskItem({
       <TouchableOpacity
         style={styles.taskContent}
         onPress={() => onToggleComplete(task.id)}
+        activeOpacity={0.6}
       >
-        <View
-          style={[styles.checkbox, task.completed && styles.checkboxCompleted]}
-        >
+        <View style={[styles.checkbox, task.completed && styles.checkboxDone]}>
           {task.completed && <Text style={styles.checkmark}>✓</Text>}
         </View>
-        <Text style={[styles.title, task.completed && styles.titleCompleted]}>
+        <Text style={[styles.title, task.completed && styles.titleDone]}>
           {task.title}
         </Text>
       </TouchableOpacity>
+
       <TouchableOpacity
-        style={styles.deleteButton}
+        style={styles.deleteBtn}
         onPress={() => onDelete(task.id)}
+        activeOpacity={0.6}
       >
-        <Text style={styles.deleteText}>✕</Text>
+        <Text style={styles.deleteText}>X</Text>
       </TouchableOpacity>
     </View>
   );
@@ -45,8 +46,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     backgroundColor: "#fff",
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    marginHorizontal: 16,
+    marginVertical: 4,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#eee",
   },
   taskContent: {
     flex: 1,
@@ -59,34 +63,21 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: "#ddd",
+    borderColor: "#ccc",
     justifyContent: "center",
     alignItems: "center",
   },
-  checkboxCompleted: {
-    backgroundColor: "#007AFF",
-    borderColor: "#007AFF",
+  checkboxDone: {
+    backgroundColor: "#34C759",
+    borderColor: "#34C759",
   },
-  checkmark: {
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
+  checkmark: { color: "#fff", fontSize: 14, fontWeight: "bold" },
   title: {
     flex: 1,
     fontSize: 16,
     color: "#333",
   },
-  titleCompleted: {
-    textDecorationLine: "line-through",
-    color: "#999",
-  },
-  deleteButton: {
-    padding: 8,
-  },
-  deleteText: {
-    color: "#FF3B30",
-    fontSize: 18,
-    fontWeight: "600",
-  },
+  titleDone: { textDecorationLine: "line-through", color: "#999" },
+  deleteBtn: { padding: 8 },
+  deleteText: { color: "#FF3B30", fontSize: 18 },
 });

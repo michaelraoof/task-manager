@@ -15,9 +15,9 @@ export default function TaskInput({ onAddTask }: TaskInputProps) {
   const [text, setText] = useState("");
 
   const handleAddTask = () => {
-    const trimmedText = text.trim();
-    if (trimmedText) {
-      onAddTask(trimmedText);
+    const trimmed = text.trim();
+    if (trimmed) {
+      onAddTask(trimmed);
       setText("");
     }
   };
@@ -27,12 +27,17 @@ export default function TaskInput({ onAddTask }: TaskInputProps) {
       <TextInput
         style={styles.input}
         placeholder="Add a new task..."
+        placeholderTextColor="#888"
         value={text}
         onChangeText={setText}
         onSubmitEditing={handleAddTask}
         returnKeyType="done"
       />
-      <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={handleAddTask}
+        activeOpacity={0.7}
+      >
         <Text style={styles.addButtonText}>Add</Text>
       </TouchableOpacity>
     </View>
@@ -47,12 +52,14 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    backgroundColor: "#fff",
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: "#ccc",
     borderRadius: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     paddingVertical: 12,
     fontSize: 16,
+    color: "#333",
   },
   addButton: {
     backgroundColor: "#007AFF",
