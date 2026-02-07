@@ -9,8 +9,10 @@ interface TaskListProps {
     onDelete: (id: string) => void;
 }
 
+// renders the task list or empty state
 export default function TaskList({tasks, onToggleComplete,onDelete}: TaskListProps) {
 
+  // show empty msg when theres nothing to display
   if(tasks.length === 0){
     return (
       <View style={styles.emptyContainer}>

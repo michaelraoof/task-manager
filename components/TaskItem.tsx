@@ -8,6 +8,7 @@ interface TaskItemProps {
   onDelete: (id: string) => void;
 }
 
+//  single task row with checkbox and delete btn
 export default function TaskItem({
   task,
   onToggleComplete,
@@ -15,6 +16,7 @@ export default function TaskItem({
 }: TaskItemProps) {
   return (
     <View style={styles.container}>
+      {/* tap anywhere on task to toggle, feels more natural */}
       <TouchableOpacity
         style={styles.taskContent}
         onPress={() => onToggleComplete(task.id)}

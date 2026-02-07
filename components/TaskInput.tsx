@@ -11,14 +11,16 @@ interface TaskInputProps {
   onAddTask: (title: string) => void;
 }
 
+// input field + button for adding new tasks
 export default function TaskInput({ onAddTask }: TaskInputProps) {
   const [text, setText] = useState("");
 
+  // handles both button press and keyboard submit
   const handleAddTask = () => {
     const trimmed = text.trim();
     if (trimmed) {
       onAddTask(trimmed);
-      setText("");
+      setText(""); // clear after adding
     }
   };
 
