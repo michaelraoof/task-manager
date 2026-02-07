@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Text,
   StyleSheet,
+  Keyboard,
 } from "react-native";
 
 interface TaskInputProps {
@@ -20,7 +21,8 @@ export default function TaskInput({ onAddTask }: TaskInputProps) {
     const trimmed = text.trim();
     if (trimmed) {
       onAddTask(trimmed);
-      setText(""); // clear after adding
+      setText("");
+      Keyboard.dismiss();
     }
   };
 
